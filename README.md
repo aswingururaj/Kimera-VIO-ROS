@@ -55,10 +55,7 @@ Install [Intel Threaded Building Blocks (TBB)](http://www.threadingbuildingblock
 ## B. KimeraVIO ROS wrapper Installation
 
 ```bash
-# Setup catkin workspace
-mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/
-catkin init
 catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release -DGTSAM_TANGENT_PREINTEGRATION=OFF
 # On Ubuntu 16.04:
 # catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release -DGTSAM_USE_SYSTEM_EIGEN=ON -DGTSAM_TANGENT_PREINTEGRATION=OFF
@@ -75,17 +72,15 @@ git clone git@github.com:MIT-SPARK/Kimera-VIO-ROS.git
 # For https:
 # git clone https://github.com/MIT-SPARK/Kimera-VIO-ROS.git
 
-# Install dependencies from rosinstall file using wstool
-wstool init # Use unless wstool is already initialized
-
 # For ssh:
 wstool merge Kimera-VIO-ROS/install/kimera_vio_ros_ssh.rosinstall
+
 # For https
 # wstool merge Kimera-VIO-ROS/install/kimera_vio_ros_https.rosinstall
 
 # download and update repos:
 wstool update
-
+# Choose append option to add new modules on top of old ones from Kimera Semantics
 # Optionally install all dependencies that you might have missed:
 # Some packages may report errors, this is expected
 # rosdep install --from-paths . --ignore-src -r -y
